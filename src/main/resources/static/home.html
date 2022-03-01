@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Home Tienda</title>
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <img src="images/logo.png" class="logo">
+                <nav>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="videos.html">Videos</a></li>
+                        <li><a href="Profile.html">Profile</a></li>
+                    </ul>
+                </nav>
+                <img src="images/cart.png">
+                <!-- Aqui finaliza nav -->
+            </div>
+            
+            <div class="content">
+                <h1>Esta es nuestra primer tienda</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit nam est,<br>phasellus tempus ultrices eu pretium mus ut libero feugiat, <br>morbi lacus cras praesent fusce justo sodales non.</p>  
+                <div>
+                    <img src="images/back-arrow.png">
+                    <img src="images/next-arrow.png">
+                </div> 
+                <img src="images/metcon7.jpg">
+            </div>
+        </div>
+    </body>
+</html>
+
+@GetMapping("/nuevoPersona")
+public String nuevoPersona(Persona persona){
+    return "modificarPersona";
+}
+
+@PostMapping("/guardarPersona")
+public String guardarPersona(Persona persona){
+    personaService.save(cliente);
+    return "redirect:/";
+}
+
+<body>
+    <h1>Datos del Cliente</h1>
+    <a th:href="@{/}">Regresar</a>
+    <br>
+    <form th:action="@{/guardarPersona}"
+          method="post"
+          th:object="${persona}">
+
+        <label for="nombre">Nombre:</label>      
+        <input type="text" name="nombre" th:field="*{nombre}"/>
+        <br>
+        <label for="apellido1">Apellido 1:</label>      
+        <input type="text" name="apellidos" th:field="*{apellido1}"/>
+        <br>
+        <label for="apellido2">Apellido 2:</label>      
+        <input type="text" name="apellidos" th:field="*{apellido2}"/>
+        <br>
+        <label for="telefono">Teléfono:</label>      
+        <input type="tel" name="telefono" th:field="*{telefono}"/>
+        <br>
+        <label for="correo">Correo:</label>      
+        <input type="email" name="correo" th:field="*{correo}"/>
+        <br>
+        <label for="paises">Paises:</label>      
+        <input type="paises" name="paises" th:field="*{paises}"/>
+        <br>
+
+        <input type="submit" name="guardar" value="guardar"/>    
+    </form>
+</body>
+
