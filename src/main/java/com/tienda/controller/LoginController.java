@@ -1,21 +1,20 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
  */
 package com.tienda.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
-/**
- *
- * @author Roberto
- */
 @Controller
 public class LoginController {
-    @GetMapping({"/","/perro"})
+    /*el slash lo que indica es que el local host esta vacio, entonces
+    que ejecute el metodo public string index... */
+    @GetMapping("/")//Aqui definimos la ruta que queremos
     public String index(){
         return "login";
     }
 }
+/*
+login.html debe estar en la carpeta templates para que lo corra
+*/
