@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="hhtp://www.thymeleaf.org">
+    <head>
+        <title>CREAR</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <form th:object = "${persona}"
+                  th:action="@{/save}"
+                  method="POST"
+                  >
+                <div class="form-group-row">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" th:field="*{nombre}"  placeholder= "Nombre Cliente" id="nombres">
+                </div>
+                <div class="form-group-row">
+                    <label for="apellido1">Apellido 01</label>
+                    <input type="text" th:field="*{apellido1}"  placeholder= "Apellido 01" id="apellido01">
+                </div>
+                <div class="form-group-row">
+                    <label for="apellido2">Apellido 02</label>
+                    <input type="text" th:field="*{apellido2}"  placeholder= "Apellido 02" id="apellido02">
+                </div>
+                <div class="form-group-row">
+                    <label for="email">Email</label>
+                    <input type="text" th:field="*{email}"  placeholder= "Email" id="email">
+                </div>
+                <div class="form-group-row">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" th:field="*{telefono}"  placeholder= "Telefono" id="telefono">
+                </div>
+                <div class="form-group-row">
+                    <label for="pais">Pais</label>
+                    <input type="text" th:field="*{pais}"  placeholder= "Pais" id="pais">
+                </div>
+                <br>
+                <button type="submit" value="Guardar">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

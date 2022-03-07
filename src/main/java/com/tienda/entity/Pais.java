@@ -7,11 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
+@Entity // La clase pais es una entidad que va a consultar la tabla pais
 @Table (name="paises")
 public class Pais implements Serializable{
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY) // duda no aparece en italic
     private long id;
     private String pais;
 
