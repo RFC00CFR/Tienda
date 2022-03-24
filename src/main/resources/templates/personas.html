@@ -5,16 +5,27 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        
         <h1 th:text="${titulo}"></h1>
+        <h1 th:text="#{index.titulo}">XXX</h1>
+        
+        <span th:text="#{lang.change}"></span>:
+        <select id="locales">
+            <option value=""></option>
+            <option value="en" th:text="#{lang.eng}"></option>
+            <option value="fr" th:text="#{lang.es}"></option>
+        </select>
+        
         <table>
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido 1</th>
-                    <th scope="col">Apellido 2</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Eliminar</th>
+                    <th scope="col" th:text="#{cliente.nombre}">XXX</th>
+                    <th scope="col"th:text="#{cliente.1erApellido}">XXX</th>
+                    <th scope="col"th:text="#{cliente.2doApellido}">XXX</th>
+                    <th scope="col"th:text="#{cliente.correo}">XXX</th>
+                    <th scope="col"th:text="#{cliente.telefono}">XXX</th>
+                    <th scope="col"th:text="#{accion.editar}">XXX</th>
+                    <th scope="col"th:text="#{accion.eliminar}">XXX</th>
             </thead>
             <tbody>
             <th:block th:each="user : ${personas}">
@@ -24,6 +35,9 @@
                     <td th:text="${user.getApellido2}"></td>
                     <td th:text="${user.getEmail}"></td>
                     <td th:text="${user.getTelefono}"></td>
+                     <td>
+                        <a th:href="@{/editPersona/{id}(id=${user.getId})}">Edit</a>
+                    </td>
                     <td>
                         <a th:href="@{/delete/{id}(id=${user.getId})}">Delete</a>
                     </td>
@@ -32,4 +46,18 @@
         </tbody>
     </table>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#locales").change(function () {
+        var selectedOption = $('#locales').val();
+        if (selectedOption != ''){
+            window.location.replace('personas?lang=' + selectedOption);
+        }
+    });
+});
+</script>
+
 </html>

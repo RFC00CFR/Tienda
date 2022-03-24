@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="plantilla/template::head"></head>
+    <head> 
+        <title> Crear </title>
+        <meta charset="UTF-8">
+    </head>
         <body>
-            <header th:replace="plantilla/tempate::header"></header>
+            <header th:replace="plantilla/template::header"></header>
             <div class="container">
                 
                 <div class="card-header bg-black text-white"></div>
@@ -11,6 +14,7 @@
                 
                 <div class="container">
                 <form th:object = "${persona}" th:action="@{/save}"method="POST">
+                    <input type="hidden" th:field="*{id}">
                     <div class="form-group-row">
                         <label for="nombre">Nombre</label>
                         <input type="text" th:field="*{nombre}" placeholder= "Nombre Cliente" id="nombres" aria-describedby="emailHelp">
@@ -42,7 +46,7 @@
                         </div>
                     </div>    
                     <br>
-                    <button type="sibmit" value="Guardar">Submit</button>
+                    <button type="submit" value="Guardar">Submit</button>
                 </form>
                </div>     
            </div>     

@@ -49,4 +49,13 @@ public class PersonasController {
         personaService.delete(idPersona);
         return "redirect:/personas";
     }
+    
+    @GetMapping("/editPersona/{id}")
+    public String editarPersona(@PathVariable("id") Long idPersona, Model model) {
+        Persona p = personaService.getPersonaById(idPersona);
+        List<Pais> listaPais = paisService.listCountry();
+        model.addAttribute("persona", p);
+        model.addAttribute("paises", listaPais);
+        return "crear";
+}
 }

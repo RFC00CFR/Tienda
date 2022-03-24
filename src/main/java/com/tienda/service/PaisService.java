@@ -18,5 +18,4 @@ public class PaisService implements IPaisService {
         return (List<Pais>) paisRepository.findAll();
     }
 
-  
 }
