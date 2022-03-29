@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class PaisService implements IPaisService {
     
+    //Inyeccion de dependencias
     @Autowired
     private PaisRepository paisRepository;
     

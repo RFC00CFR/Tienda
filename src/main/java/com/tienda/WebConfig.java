@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -18,14 +19,7 @@ Internacionalozation --- i18n  - - - 18 letas entre I y n
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    
-//    @Bean
-//    public SessionLocaleResolver localeResolver(){
-//        var slr = new SessionLocaleResolver();
-//        slr.setDefaultLocale(new Locale("en"));
-//        return slr;
-//    }
-    
+
     @Bean
     public SessionLocaleResolver localeResolver() {
         final SessionLocaleResolver localeResolver = new SessionLocaleResolver();
@@ -40,15 +34,15 @@ public class WebConfig implements WebMvcConfigurer {
         return lci;
     }
     
-//    @Bean
-//    public LocaleChangeInterceptor localeChangeInterceptor() {
-//        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-//        lci.setParamName("lang");
-//        return lci;
-//    }
-    
     @Override
     public void addInterceptors(InterceptorRegistry registro) {
         registro.addInterceptor(localeChangeInterceptor());
+    }
+    
+    @Override
+    public void addViewControllers(ViewControllerRegistry registro){
+        registro.addViewController("/").setViewName("crear");
+        registro.addViewController("/login");
+        registro.addViewController("/errores/403").setViewName("/errores/403");
     }
 }
