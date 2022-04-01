@@ -9,10 +9,12 @@
                 <div class="card-header bg-black text-white"></div>
                 <div class="card-body"></div>
                 
-                
+<!--                Form      -->
                 <div class="container">
                 <form th:object = "${persona}" th:action="@{/save}"method="POST">
+                    
                     <input type="hidden" th:field="*{id}">
+                    
                     <div class="form-group-row">
                         <label for="nombre">Nombre</label>
                         <input type="text" th:field="*{nombre}" placeholder= "Nombre Cliente" id="nombres" aria-describedby="emailHelp">
@@ -36,7 +38,7 @@
                     <div class="form-group-row">
                         <label for="pais">Pais</label>
                         <div>
-                            <select type="text" th:field="*{pais}" placeholder= "Pais" id="pais" aria-describedby="emailHelp">
+                            <select th:field="*{pais}" placeholder="Pais" id="pais">
                                 <option th:each="x:${paises}"
                                         th:value="${x.id}"
                                         th:text="${x.pais}"/>
@@ -47,7 +49,9 @@
                     <button type="submit" value="Guardar">Submit</button>
                 </form>
                </div>     
-           </div>     
+            </div> 
+            <!--            Footer-->
+            <footer th:replace="plantilla/template::footer"></footer>
         </body>
     </html>
 

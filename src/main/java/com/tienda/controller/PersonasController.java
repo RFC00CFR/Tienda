@@ -56,6 +56,7 @@ public class PersonasController {
         List<Pais> listaPais = paisService.listCountry();
         model.addAttribute("persona", p);
         model.addAttribute("paises", listaPais);
+        //personaService.savePerson(persona);
         return "crear";
-}
+    }
 }
