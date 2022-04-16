@@ -1,15 +1,14 @@
 package com.tienda.service;
 
 import com.tienda.entity.Persona;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class Userprincipal implements UserDetails {
-
     private Persona persona;
 
     public Userprincipal(Persona persona) {
@@ -19,12 +18,14 @@ public class Userprincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-
+        
+        // Extract list of permissions (name)
         this.persona.getPermissionList().forEach(p -> {
             GrantedAuthority authority = new SimpleGrantedAuthority(p);
             authorities.add(authority);
         });
-
+        
+        // Extract list of roles (ROLE_name)
         this.persona.getRoleList().forEach(r -> {
             GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
             authorities.add(authority);

@@ -1,10 +1,4 @@
 
-import com.tienda.entity.Pais;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.tienda.entity.Pais;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 @Table(name = "personas")
@@ -19,36 +18,8 @@ public class Persona implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
-    private String apellido1;
-    private String apellido2;
-    private String telefono;
-    private String email;
-    private String nombre;
-
-    private String password;
-    private int active;
-    private String roles = "";
-    private String permissions = "";
-    @ManyToOne
-    @JoinColumn(name = "paises_id")
-    private Pais pais;
-
-    public List<String> getRoleList() {
-        if (this.roles.length() > 0) {
-            return Arrays.asList(this.roles.split(","));
-        }
-        return new ArrayList<>();
-    }
-
-    public List<String> getPermissionList() {
-        if (this.permissions.length() > 0) {
-            return Arrays.asList(this.permissions.split(","));
-        }
-        return new ArrayList<>();
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -56,7 +27,22 @@ public class Persona implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
+    private String nombre;
+    private String apellido1;
+    private String apellido2;
+    private String telefono;
+    private String email;
+    private String password;
+ 
+    private int active;
+    private String roles = "";
+    private String permissions = "";
+    
+    @ManyToOne
+    @JoinColumn(name = "paises_id")
+    private Pais pais;
+    
     public long getId() {
         return id;
     }
@@ -137,4 +123,17 @@ public class Persona implements Serializable {
         this.permissions = permissions;
     }
 
+     public List<String> getRoleList() {
+        if (this.roles.length() > 0) {
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
+
+    public List<String> getPermissionList() {
+        if (this.permissions.length() > 0) {
+            return Arrays.asList(this.permissions.split(","));
+        }
+        return new ArrayList<>();
+    }
 }
